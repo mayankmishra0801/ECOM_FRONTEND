@@ -10,10 +10,11 @@ import { CategoryService } from '../../../services/category.service';
 import { BrandService } from '../../../services/brand.service';
 import { ProductService } from '../../../services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 @Component({
   selector: 'app-product-form',
   standalone: true,
-  imports: [ReactiveFormsModule,MatInputModule,MatButtonModule,MatSelectModule],
+  imports: [ReactiveFormsModule,MatInputModule,MatButtonModule,MatSelectModule,MatCheckboxModule],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.scss'
 })
@@ -28,6 +29,8 @@ export class ProductFormComponent {
     images:this.formBuilder.array([]),
     categoryId:[null,[Validators.required]],
     brandId:[null,[Validators.required]],
+    isNew:[false],
+    isFeatured:[false]
 
 
 

@@ -1,0 +1,27 @@
+<header class="site-header">
+   <div class="top-bar">
+      <div class="logo cursor-pointer" routerLink="/">
+
+        <span>MyShopName</span>
+      </div>
+       <div class="search-bar"> 
+
+        <input type="text" placeholder="Search..." (keyup.enter)="onSearch($event)">
+        <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="profile">
+            <a href="#">Profile</a>
+        </div>
+    </div>
+
+
+    <nav class="category-menu">
+        <ul>
+            @for(category of categoryList;track $index){
+                <li (click)="searchCategory(category._id!)"><a>{{category.name}}</a></li>
+            }
+          
+
+        </ul>
+    </nav>
+</header>

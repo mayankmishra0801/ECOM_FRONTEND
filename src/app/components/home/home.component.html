@@ -1,1 +1,62 @@
-<p>home works!</p>
+<div class="px-20">
+<div class="shadow">
+    <owl-carousel-o [options]="customOptions">
+        @for (item of bannerImages; track $index) {
+
+
+
+        <ng-template carouselSlide>
+            <div class="relative flex flex-col items-center" [routerLink]="'products/'+item._id">
+
+                            
+            <img [src]="item.images[0]" alt="images">
+            <span>{{item.name}}</span>
+
+            </div>
+            
+
+
+       
+     
+    </ng-template>  
+
+       
+        }  
+    </owl-carousel-o>
+</div>
+
+<div class="m-4">
+    <h4 class="text-2xl font-bold">Featured Products</h4>
+    <div class="flex flex-wrap gap-2">
+        @for(item of featuredProducts;track $index){
+             
+            <div class="w-3/12 shadow">
+             <app-product-card [item]="item"></app-product-card>
+            
+             </div>
+
+        }
+        
+  
+    </div>
+</div>
+
+
+
+<div class="m-4">
+    <h4 class="text-2xl font-bold">New Products</h4>
+    <div class="flex justify-between gap-2">
+        @for(item of newProducts;track $index){
+             
+            <div class="w-3/12 shadow">
+   <app-product-card [item]="item"></app-product-card>
+            
+             </div>
+
+        }
+        
+  
+    </div>
+</div>
+
+</div>
