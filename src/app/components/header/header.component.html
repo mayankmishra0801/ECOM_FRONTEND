@@ -10,11 +10,24 @@
         <button type="submit"><i class="fas fa-search"></i></button>
         </div>
         <div class="profile">
-            <a href="#">Profile</a>
+            @if(authService.isAdmin){
+                <a routerLink="/admin">{{authService.userName}}</a>
+            }@else {
+            <a routerLink="/profile">{{authService.userName}}</a>
+
+            }
+            @if(authService.isLoggedIn){
+                <a (click)="logout()" class="cursor-pointer ml-2" >Logout</a>
+
+            }@else {
+                <a routerLink="/login" class="cursor-pointer ml-2" >Log In</a>
+                <a routerLink="/register" class="cursor-pointer ml-2" >Register</a>
+   
+            }
         </div>
     </div>
 
-
+@if(authService.isLoggedIn){
     <nav class="category-menu">
         <ul>
             @for(category of categoryList;track $index){
@@ -23,5 +36,7 @@
           
 
         </ul>
-    </nav>
+    </nav> 
+}
+  
 </header>

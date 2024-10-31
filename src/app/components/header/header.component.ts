@@ -1,7 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { CategoryService } from '../../services/category.service';
 import { Category } from '../../types/category';
 import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { CustomerService } from '../../services/customer.service';
 
 @Component({
   selector: 'app-header',
@@ -12,13 +14,25 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class HeaderComponent {
  router= inject(Router)
-  categoryService = inject(CategoryService);
+  customerService = inject(CustomerService);
+  // categoryService = inject(CategoryService)
   categoryList:Category[] = [];
-
+  authService = inject(AuthService);
+  userName!:string
+  private cdr = inject(ChangeDetectorRef);
    ngOnInit() {
-       this.categoryService.getCategories().subscribe((result:any)=>{
+  console.log("hjh",this.authService.isAdmin)
+
+       this.customerService.getCategories().subscribe((result:any)=>{
            this.categoryList = result
        })
+
+        this.userName = this.authService.userName.toString();
+      //  localStorage.setItem("userId",JSON.stringify(result.user));
+
+      //  this.userName = this.authService.userName;
+       console.log("khjghf",this.userName)
+       this.cdr.detectChanges();
    }
 
    onSearch(e:any){
@@ -34,5 +48,10 @@ export class HeaderComponent {
   searchCategory(id:string){
      this.router.navigateByUrl("/products?categoryId="+id)
 
+  }
+
+  logout(){
+    this.authService.logout()
+    this.router.navigateByUrl("/login")
   }
 }
