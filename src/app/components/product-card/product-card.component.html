@@ -1,21 +1,42 @@
-<div class="border-r-4 w-full shadow-lg" [routerLink]="'products/'+item._id"
+@if(item){
+
+
+<div class="border-r-4 w-full h-full flex flex-col shadow-lg" [routerLink]="'/products/'+item._id"
 >
      <img [src]="item.images[0]" class="w-full h-52 object-cover" alt="Product Image"
       style="width:100%;height:200px; object-fit:cover"
      />
-     <div class="p-4">
-       <h6 class="mb-2">{{item.name}}</h6>
-       <p>
-           {{item.shortDescription}}
+     <div class="p-4 flex flex-1 flex-col justify-between h-full">
+        <div>
+            <h6 class="mb-2">{{item.name}}</h6>
+            <p>
+                {{item.shortDescription}}
+     
+            </p>
+        </div>
+      
+       <div class="flex justify-between items-baseline">
+           <!-- <span class="text-2xl font-bold">{{item.price}}₹</span> -->
+           
+           <div class="flex gap-2 items-baseline">
+            <span class="!text-lg text-gray-400"><s>{{item.price}}</s>₹</span>
+            <span class="!text-xs text-orange-300">{{item.discount}}%OFF</span>
+            <span class="!text-lg text-green-500 font-bold">{{sellingPrice}}₹</span>
 
-       </p>
-       <div class="flex justify-between items-center">
-           <span class="text-2xl font-bold">{{item.price}}₹</span>
-           <button
-           mat-flat-button color="primary"
-           > Add to Cart</button>
+
+        </div>
+           
+        
 
        </div>
+       <button
+       mat-flat-button color="primary"
+       > Add to Cart</button>
      </div>
 
      </div>
+    }
+
+    @else {
+        <h2>Loading....</h2>
+    }

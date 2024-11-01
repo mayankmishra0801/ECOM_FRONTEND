@@ -51,6 +51,10 @@ export class CustomerService {
     return this.http.get<Brand[]>(environment.apiUrl+"/customer/brands")
   }
 
+  getProductById(id:string){
+    
+    return this.http.get<Product>(environment.apiUrl+"/customer/product/"+id)
+}
 
 
 

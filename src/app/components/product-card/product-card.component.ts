@@ -17,4 +17,8 @@ export class ProductCardComponent {
   // @Input() product!:Product[]
   // @Input() item!:Product
 
+  get sellingPrice(){
+    return Math.round( this.item.price - (this.item.price * (this.item.discount)/100))
+ }
+
 }
