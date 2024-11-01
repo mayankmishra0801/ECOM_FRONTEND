@@ -14,4 +14,7 @@ export class ProductCardComponent {
 
 
   @Input() item!:Product
+  // @Input() product!:Product[]
+  // @Input() item!:Product
+
 }

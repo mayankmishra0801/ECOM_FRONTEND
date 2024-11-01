@@ -6,7 +6,9 @@
       </div>
        <div class="search-bar"> 
 
-        <input type="text" placeholder="Search..." (keyup.enter)="onSearch($event)">
+        <input type="text" placeholder="Search..."
+        [(ngModel)]="searchTerm"
+        (keyup.enter)="onSearch($event)">
         <button type="submit"><i class="fas fa-search"></i></button>
         </div>
         <div class="profile">
@@ -31,7 +33,7 @@
     <nav class="category-menu">
         <ul>
             @for(category of categoryList;track $index){
-                <li (click)="searchCategory(category._id!)"><a>{{category.name}}</a></li>
+                <li (click)="searchCategory(category._id!)" class="cursor-pointer"><a>{{category.name}}</a></li>
             }
           
 
