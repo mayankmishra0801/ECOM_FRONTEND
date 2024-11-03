@@ -14,6 +14,10 @@ import { authGuard } from './core/auth-guard';
 import { AdminDashboardComponent } from './components/manage/admin-dashboard/admin-dashboard.component';
 import { adminGuard } from './core/admin-guard';
 import { CustomerProfileComponent } from './components/customer-profile/customer-profile.component';
+import { WishlistsComponent } from './components/wishlists/wishlists.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { CustomerOrdersComponent } from './components/customer-orders/customer-orders.component';
+import { OrdersComponent } from './components/manage/orders/orders.component';
 
 export const routes: Routes = [{
     path:"",
@@ -101,15 +105,41 @@ export const routes: Routes = [{
    path:"admin",
    component:AdminDashboardComponent,
    canActivate:[adminGuard]
- }
-,
+ },
+
+ {
+   path:'wishlists',
+   component:WishlistsComponent,
+   canActivate:[authGuard]
+
+
+ },
+
+ {
+   path:'cart',
+   component:ShoppingCartComponent,
+   canActivate:[authGuard]
+
+ },
 
 {
    path:"profile",
    component:CustomerProfileComponent,
    canActivate:[authGuard]
-}
+},
 
+{
+   path:'orders',
+   component:CustomerOrdersComponent,
+   canActivate:[authGuard]
+
+ },
+ {
+   path:'admin/orders',
+   component:OrdersComponent,
+   canActivate:[adminGuard]
+
+ },
 
 
 

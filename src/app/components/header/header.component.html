@@ -11,7 +11,7 @@
         (keyup.enter)="onSearch($event)">
         <button type="submit"><i class="fas fa-search"></i></button>
         </div>
-        <div class="profile">
+        <div class="profile flex gap-2 items-center">
             @if(authService.isAdmin){
                 <a routerLink="/admin">{{authService.userName}}</a>
             }@else {
@@ -19,6 +19,25 @@
 
             }
             @if(authService.isLoggedIn){
+                @if(!authService.isAdmin){
+                    <a routerLink="/wishlists">
+                        <mat-icon class="text-red-500">favorite</mat-icon>
+        
+                     </a>
+                     <a routerLink="/cart">
+                        <mat-icon class="text-white">shopping_cart</mat-icon>
+        
+                     </a>
+
+                     <a routerLink="/orders">
+                        Orders
+        
+                     </a>
+
+                }
+          
+          
+
                 <a (click)="logout()" class="cursor-pointer ml-2" >Logout</a>
 
             }@else {

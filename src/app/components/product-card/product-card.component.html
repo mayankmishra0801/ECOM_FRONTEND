@@ -1,13 +1,13 @@
-@if(item){
+@if(item?._id){
 
 
-<div class="border-r-4 w-full h-full flex flex-col shadow-lg" [routerLink]="'/products/'+item._id"
+<div class="border-r-4 w-full h-full flex flex-col shadow-lg" 
 >
-     <img [src]="item.images[0]" class="w-full h-52 object-cover" alt="Product Image"
+     <img [src]="item?.images?.[0]" class="w-full h-52 object-cover" [routerLink]="'/products/'+item?._id" alt="Product Image"
       style="width:100%;height:200px; object-fit:cover"
      />
      <div class="p-4 flex flex-1 flex-col justify-between h-full">
-        <div>
+        <div [routerLink]="'/products/'+item._id">
             <h6 class="mb-2">{{item.name}}</h6>
             <p>
                 {{item.shortDescription}}
@@ -26,17 +26,40 @@
 
         </div>
            
-        
+
+      
 
        </div>
-       <button
-       mat-flat-button color="primary"
-       > Add to Cart</button>
+       <div class="flex justify-between items-baseline">
+        <button mat-fab color="warn" (click)="addToWishList(item)">
+
+            <!-- <mat-icon>favorite</mat-icon> -->
+             @if(wishlistService.wishlists|checkwishlist:item._id){
+             <mat-icon class="text-red-500">favorite</mat-icon>
+             }@else{
+             <mat-icon class="text-red-500">favorite_border</mat-icon>
+             }
+          </button>
+          <button mat-fab color="primary" (click)="addToCart(item)">
+            <!-- <mat-icon>remove_shopping_cart</mat-icon> -->
+             @if(isProductInCart(item._id!)){
+            <mat-icon>remove_shopping_cart</mat-icon>
+               
+
+             }@else {
+                <mat-icon>add_shopping_cart</mat-icon>
+
+             }
+          </button>
+       </div>
+     
+     
+       
      </div>
 
      </div>
     }
 
-    @else {
+    <!-- @else {
         <h2>Loading....</h2>
-    }
+    } -->

@@ -23,8 +23,32 @@
 
 
         </div>
-        <button mat-flat-button color="primary" class="shadow">Add to Cart</button>
+  
+   
+    </div>
+    <div class="flex gap-12">
+        <button mat-flat-button color="accent" class="flex items-center" (click)="addToWishList(product)">
 
+            <!-- <mat-icon>favorite</mat-icon> -->
+             @if(isInWishList(product._id!)){
+             <mat-icon class="text-red-500">favorite</mat-icon><span>Remove from WishList</span> 
+             }@else{
+             <mat-icon class="text-red-500">favorite_border</mat-icon>Add To Wishlist
+             }
+          </button>
+
+          @if(isProductInCart(product._id!)){
+            <button mat-flat-button color="primary" class="shadow" (click)="addToCart(product)">
+            <mat-icon>remove_shopping_cart</mat-icon>
+               
+                Add to Cart</button>
+
+          }@else {
+        <button mat-flat-button color="primary" class="shadow" (click)="addToCart(product)">
+            <mat-icon>add_shopping_cart</mat-icon>
+            
+            Remove from Cart</button>
+          }
     </div>
 </div>
 
