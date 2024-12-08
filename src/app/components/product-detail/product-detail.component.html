@@ -30,11 +30,21 @@
         <button mat-flat-button color="accent" class="flex items-center" (click)="addToWishList(product)">
 
             <!-- <mat-icon>favorite</mat-icon> -->
-             @if(isInWishList(product._id!)){
+             @if(isInWishList(product._id!)){<span>
+
+           
              <mat-icon class="text-red-500">favorite</mat-icon><span>Remove from WishList</span> 
-             }@else{
+            </span>
+            }
+          
+             @else{
+                <span>
+
+               
              <mat-icon class="text-red-500">favorite_border</mat-icon>Add To Wishlist
+            </span>
              }
+
           </button>
 
           @if(isProductInCart(product._id!)){
