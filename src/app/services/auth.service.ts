@@ -72,4 +72,13 @@ export class AuthService {
     localStorage.removeItem("user");
     localStorage.removeItem("userId");
   }
+
+  forgotPassword(email: string) {
+    return this.http.post(environment.apiUrl + '/auth/forgot-password', { email });
+  }
+
+  resetPassword(token: string, newPassword: string){
+    return this.http.post(`${environment.apiUrl}/auth/reset-password`, { token, newPassword });
+  }
+  
 }

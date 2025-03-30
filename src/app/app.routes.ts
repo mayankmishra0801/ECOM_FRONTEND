@@ -18,7 +18,8 @@ import { WishlistsComponent } from './components/wishlists/wishlists.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { CustomerOrdersComponent } from './components/customer-orders/customer-orders.component';
 import { OrdersComponent } from './components/manage/orders/orders.component';
-
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 export const routes: Routes = [{
     path:"",
     component:HomeComponent,
@@ -102,6 +103,16 @@ export const routes: Routes = [{
    component:LoginComponent
  },
  {
+  path:"forgot-password",
+  component:ForgotPasswordComponent
+ },
+ {
+
+  path:'reset-password/:token',
+  component:ResetPasswordComponent
+
+ },
+ {
    path:"admin",
    component:AdminDashboardComponent,
    canActivate:[adminGuard]
@@ -140,6 +151,8 @@ export const routes: Routes = [{
    canActivate:[adminGuard]
 
  },
+
+
 
 
 
